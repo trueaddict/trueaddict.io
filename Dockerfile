@@ -10,7 +10,9 @@ COPY . ./
 RUN npm run build
 
 # production environment
+
+
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE $PORT
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
