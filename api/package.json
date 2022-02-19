@@ -2,9 +2,9 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "index.ts",
   "scripts": {
-    "start": "ts-node index.tsx",
+    "start": "ts-node index.ts",
     "start:dev": "./node_modules/nodemon/bin/nodemon.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint --project tsconfig.json --config tslint.json",
@@ -23,6 +23,8 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.18.2",
+    "axios": "^0.26.0",
     "express": "^4.17.3"
   }
 }

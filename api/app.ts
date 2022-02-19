@@ -1,5 +1,8 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import Routes from './routes/routes';
+import Auth from './routes/auth';
+import verifyAuthToken from './middleware/auth.verify';
 
 class App {
     public express: express.Application;
@@ -21,9 +24,11 @@ class App {
             res.sendFile(process.cwd() + '/client/build/index.html' );
         });
 
-        this.express.get('/api/time', (reg, res) => {
-            res.json({time: new Date().toISOString()});
-        })
+        // Auth
+        this.express.use('/auth', Auth);
+
+        // Api
+        this.express.use('/api', verifyAuthToken, Routes);
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {
