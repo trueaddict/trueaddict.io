@@ -25,9 +25,22 @@ const getFileList = async (req : any, res : any) => {
         let fileInfos : any[] = [];
         
         files.forEach( (file) => {
-            fileInfos.push({
-                name: encodeURIComponent(file.name),
-            });
+            fileInfos.push(file);
+        })
+
+        res.send(fileInfos);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const getPublicFileList = async (req : any, res : any) => {
+    try {
+        const [files] = await bucket.getFiles({ prefix: 'public/', autoPaginate: false });
+        let fileInfos : any[] = [];
+        
+        files.forEach( (file) => {
+            fileInfos.push(file);
         })
 
         res.send(fileInfos);
@@ -53,4 +66,4 @@ const download = async (req : any, res : any) => {
     }
 }
 
-export default {upload, getFileList, download};
+export default {upload, getFileList, getPublicFileList, download};

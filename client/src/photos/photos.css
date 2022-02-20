@@ -1,0 +1,12 @@
+.header {
+    height: 1rem;
+}
+
+.center {
+    margin: auto;
+    padding: 3rem;
+}
+
+div.gallery:hover {
+    opacity: 95%;
+}

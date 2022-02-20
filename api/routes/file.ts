@@ -21,6 +21,7 @@ class File {
 
     private routes() : void {
         this.express.get('/files', Controller.getFileList);
+        this.express.get('/files/public', Controller.getPublicFileList);
         this.express.get('/file/:name', Controller.download);
     }
 }

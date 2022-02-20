@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as cors from 'cors';
 import Routes from './routes/routes';
 import Auth from './routes/auth';
 import verifyAuthToken from './middleware/auth.verify';
@@ -17,6 +18,7 @@ class App {
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
         this.express.use(express.static(process.cwd() + '/client/build/' ));
+        this.express.use(cors({ origin : ['http://localhost:3000'] }));
     }
 
     private routes(): void {
