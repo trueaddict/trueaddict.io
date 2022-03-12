@@ -34,7 +34,7 @@ class App {
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {
-            res.send("Undefined url address");
+            res.sendFile(process.cwd() + '/client/build/index.html' );
         });
     }
 }
