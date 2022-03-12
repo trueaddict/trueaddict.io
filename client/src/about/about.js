@@ -1,11 +1,35 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-const about = () => {
+
+const fetchTime = async () => {
+    return fetch(`/api/time?token=kissa`, {
+        method: 'GET',
+        headers: {},
+    })
+    .then( res => res.json())
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+};
+
+const About = () => {
+    const [time, setTime] = useState('');
+
+
+    useEffect(() => {
+        (async () => {
+            const data = await fetchTime();
+            console.log(data);
+            setTime(data.time);
+        })();
+    }, []);
+
     return (
         <p>
-            About
+            {time}
         </p>
     );
 }
 
-export default about;
+export default About;

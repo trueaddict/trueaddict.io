@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react";
 import './photos.css';
 
-const URL = 'http://localhost:3080';
-
 const fetchPhotos = async () => {
-    return fetch(`${URL}/api/files/public?token=kissa`, {
+    return fetch(`/api/files/public?token=kissa`, {
         method: 'GET',
         headers: {},
     })
     .then( res => res.json())
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
 };
 
 const Photos = () => {
@@ -28,9 +30,9 @@ const Photos = () => {
             <div className="header"></div>
             {photosList.length > 0 ? photosList.map( (photo) => (
                 <div key={photo.id} className="gallery">
-                    <a className="waves-effect waves-light">
-                        <img className="responsive-img" src={`${URL}/api/file/${photo.id}?token=kissa`} alt="photo" height={500}></img>
-                    </a>
+                    <div className="waves-effect waves-light">
+                        <img className="responsive-img" src={`/api/file/${photo.id}?token=kissa`} alt={photo.id} height={500}></img>
+                    </div>
                 </div>
             ) ) : (
                 <div className="center">
