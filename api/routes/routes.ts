@@ -1,6 +1,9 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+
+// Route
 import File from './file';
+import Weather from './weather';
 
 
 class Routes {
@@ -20,6 +23,9 @@ class Routes {
     private routes() : void {
         // Files route
         this.express.use('/', File);
+
+        // Weather
+        this.express.use('/weather', Weather);
 
         // Time example
         this.express.get('/time', (reg, res) => {

@@ -27,9 +27,9 @@ const Home = () => {
         })();
     }, []);
 
-    if (!state.isLoggedIn) {
+    /*if (!state.isLoggedIn) {
         return <Navigate to="/login"/>;
-    }
+    }*/
 
     return (
         <p>

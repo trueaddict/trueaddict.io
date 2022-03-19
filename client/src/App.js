@@ -11,6 +11,7 @@ import Home from './home/home';
 import Photos from './photos/photos';
 import About from './about/about';
 import Login from './login/login';
+import Weather from './weather/weather';
 
 export const AuthContext = createContext();
 
@@ -35,6 +36,9 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/weather">Weather</Link>
+            </li>
+            <li>
               <Link to="/photos">Photos</Link>
             </li>
             <li>
@@ -55,6 +59,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<Home/>}></Route>
+        <Route exact path="/weather" element={<Weather/>}></Route>
         <Route path="/photos" element={<Photos/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
